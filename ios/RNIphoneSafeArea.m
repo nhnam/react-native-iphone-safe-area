@@ -1,6 +1,7 @@
 
 #import "RNIphoneSafeArea.h"
 #import <UIKit/UIKit.h>
+
 @implementation RNIphoneSafeArea
 
 - (dispatch_queue_t)methodQueue
@@ -10,7 +11,7 @@
 
 RCT_EXPORT_MODULE()
 
-- (BOOL) hasNotch {
+RCT_EXPORT_METHOD(hasNotch:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     UIViewController *root = [UIApplication sharedApplication].delegate.window.rootViewController;
     UIEdgeInsets safeAreaInsets;
     if (@available(iOS 11, *)) {
@@ -18,10 +19,10 @@ RCT_EXPORT_MODULE()
     } else {
         safeAreaInsets = UIEdgeInsetsZero;
     }
-    return safeAreaInsets.top > 0;
+    resolve(@(safeAreaInsets.top > 0));
 }
 
-- (CGFloat) top {
+RCT_EXPORT_METHOD(top:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     UIViewController *root = [UIApplication sharedApplication].delegate.window.rootViewController;
     UIEdgeInsets safeAreaInsets;
     if (@available(iOS 11, *)) {
@@ -29,10 +30,10 @@ RCT_EXPORT_MODULE()
     } else {
         safeAreaInsets = UIEdgeInsetsZero;
     }
-    return safeAreaInsets.top;
+    resolve(@(safeAreaInsets.top));
 }
 
-- (CGFloat) bottom {
+RCT_EXPORT_METHOD(bottom:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     UIViewController *root = [UIApplication sharedApplication].delegate.window.rootViewController;
     UIEdgeInsets safeAreaInsets;
     if (@available(iOS 11, *)) {
@@ -40,7 +41,7 @@ RCT_EXPORT_MODULE()
     } else {
         safeAreaInsets = UIEdgeInsetsZero;
     }
-    return safeAreaInsets.bottom;
+    resolve(@(safeAreaInsets.bottom));
 }
 @end
   
