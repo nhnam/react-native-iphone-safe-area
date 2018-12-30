@@ -45,9 +45,10 @@
 
 ## Usage
 ```javascript
-import RNIphoneSafeArea from 'react-native-iphone-safe-area';
+import IphoneSafeArea from 'react-native-iphone-safe-area';
+//...
 
-// TODO: What to do with the module?
-RNIphoneSafeArea;
+const result = await IphoneSafeArea.hasNotch(); // true
+const topNotch = await IphoneSafeArea.top(); // 44px
 ```
   
